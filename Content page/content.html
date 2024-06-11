@@ -1,0 +1,272 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content page2</title>
+    <link rel="styles" type="text/css"
+        href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        * {
+            font-family: Century Gothic;
+            box-sizing: border-box;
+            margin: 0;
+            line-height: 130%;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            scroll-behavior: smooth;
+        }
+
+        ::-webkit-scrollbar {
+            width: 11px;
+        }
+        ::-webkit-scrollbar-track {
+            background-color: rgb(37, 37, 37);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cc0000c4;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #e63e20ec;
+        }
+        
+        .navbar {
+            width: 100%;
+            height: 17%;
+            display: flex;
+            flex-direction: row;
+            background-color: rgba(250, 246, 246, 0.9);
+            top: 0;
+            position: fixed;
+            z-index: 99;
+            flex-wrap: wrap;
+        }
+        .navbar-logo {
+            width: auto;
+            height: 130px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        
+        .nav-items {
+            font-family: Century Gothic;
+            font-weight: bold;
+            width: 80%;
+            height: 100%;
+            right: 0;
+            margin-left: auto;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-around;
+            flex-wrap: wrap;
+
+        }
+        .nav-pageEditor,
+        .nav-item {
+            text-decoration: none;
+            height: 60%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            font-family: "Concert One", sans-serif;
+            color: #A93226;
+            font-size: 20px;
+            flex: 1 0 auto;
+            flex-wrap: wrap;
+        }
+        .nav-pageEditor,
+        nav div a {
+            position: relative;
+        }
+        .nav-pageEditor{
+            cursor: pointer;
+        }
+        .nav-pageEditor:hover,
+        nav div a:hover {
+            color: #7a7574;
+        }
+        .nav-pageEditor::before,
+        .nav-item::before {
+            content: "";
+            display: block;
+            height: 5px;
+            background-color: #f4f7f3a9;
+            position: absolute;
+            bottom: 0;
+            width: 0%;
+            transition: all ease-in-out 250ms;
+        }
+        .nav-pageEditor:hover::before,
+        nav div a:hover::before {
+            width: 80%;
+        }
+        @media screen and (max-width: 1185px) {
+
+            html,
+            body {
+                background-size: auto 100%;
+                background-position: center center;
+            }
+        }
+
+        .content {
+            background-color: #F5B7B1;
+            height: 1000px;
+            padding-top: 100px;
+        }
+
+        .block {
+            padding-top: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: black;
+            max-width: 80%;
+            margin: auto;
+            height: 80%;
+        }
+
+        .Display {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .headingcontent {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            color: black;
+            font-weight: bold;
+            padding-top: 100px;
+            padding-bottom: 30px;
+            padding-left: 700px;
+        }
+
+        .paragraph1 {
+            padding-top: 30px;
+            height: 300px;
+            font-size: 18px;
+            position: absolute;
+            left:700px;
+            width: 600px
+        }
+        .paragraph2{
+            max-height: 1500px;
+            font-size: 18px;
+            position: relative;
+            left:50px;
+            top: 60px;
+            width: 900px
+        }
+
+        .footerdisplay {
+            background: #A93226;
+            background-blend-mode: darken;
+            background-size: cover;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .image {
+            height: 320px;
+            width: 400px;
+            padding: 4px;
+            float: left;
+            margin-right: 20px;
+            box-shadow: 4px 4px 25px black;
+            border-radius: 8px;
+        }
+        .footerblock{
+            padding: 10px 0;
+        }
+        .toTop{
+            background-color: #fff;
+            color: #A93226;
+            padding: 10px 20px;
+            border-radius: 5px; 
+            cursor: pointer;
+        }
+    </style>
+
+</head>
+
+<body>
+    <nav class="navbar">
+        <img src="websiteLogo.png" alt="Logo" class="navbar-logo">
+        <div class="nav-items">
+            <a href="#home" class="nav-home nav-item">Home</a>
+            <a href="gallery.html" class="nav-gallery nav-item">Gallery</a>
+            <a href="#shop" class="nav-shop nav-item">Shop</a>
+            <a href="#userProfile" class="nav-userprofile nav-item">User Profile</a>
+            <a href="#feedback" class="nav-feedback nav-item">Feedback</a>
+            <a href="sitemap.html" class="nav-sitemap nav-item">Sitemap</a>
+            <a href="content.html" class="nav-content nav-item">Content Page</a>
+            <div class="nav-pageEditor" id="pageEditor" onclick="openPageEditor()">Page Editor</div>
+        </div>
+    </nav>
+
+    <div class="content">
+        <div class="block">
+            <div class="Display">
+                <h1 class="headingcontent" >Actions and Progress</h1>
+                <img class="image" src="contentpage.jpg" alt="Actions and progress" style="max-width: 100%; height: auto;">
+                <p class="paragraph1">
+                    During the pandemic era, the progress towards achieving quality education was very slow because of the 
+                    impact on learning. Still there have been a slight increase in primary and secondary school completion rates 
+                    globally. Despite the efforts of UN targets, many schools don't aim to achieve these goals. UN works closely 
+                    with governments, organizations and private sector to hold partnerships and collaborations with them.Which interms
+                    helps with better education systems and teaching systems. UN  increased investment in education to address the problems 
+                    rising for it.
+                </p>
+                <p class="paragraph2">
+                    The UN provides technical assistance and capacity-building support to countries, particularly in low-income regions, to
+                    strengthen their education systems, improve teacher qualifications, and enhance digital literacy. Training programs and 
+                    workshops help build local capacity to address the unique challenges faced by each community.
+                    The UN has launched various global education initiatives aimed at promoting access to quality education for all, such as 
+                    the Education 2030 Agenda and the Sustainable Development Goals (SDGs), which include specific targets for achieving universal 
+                    access to education, improving literacy rates, and enhancing the quality of education.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footerdisplay">
+        <p class="footerblock">
+            <button onclick="goToTop()">
+                <span class="toTop"> Go to Top</span>
+            </button>
+        </p>
+    </footer>
+    <script>
+        function openPageEditor() {
+            window.open("Editor.html");
+        }
+        function goToTop() {
+            window.scrollTo(0, 0);
+        }
+    </script>
+
+</body>
+
+</html>
