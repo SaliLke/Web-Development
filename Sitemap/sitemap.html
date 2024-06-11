@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: #b7b7b7;
+        }
+        svg{
+            width: 100%;
+            height: auto;
+            max-width: 1250px;
+            max-height: 380px;
+            padding-top: 0;
+            padding-left: 50px;
+            padding-right: 50px;
+        }
+        text{
+            fill: black;
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-weight: bold;
+        }
+        h3{
+            padding-top: 160px;
+            padding-left: 600px;
+            font-size: 30px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        #HomeGroup:hover rect,
+        #GalleryGroup:hover rect,
+        #ShopGroup:hover rect,
+        #UserProfileGroup:hover rect,
+        #FeedbackGroup:hover rect,
+        #SitemapGroup:hover rect,
+        #TeamGroup:hover rect,
+        #ContentPageGroup:hover rect{
+            stroke: aqua;
+            stroke-width: 8;
+        }
+        #HomeGroup:hover text,
+        #GalleryGroup:hover text,
+        #ShopGroup:hover text,
+        #UserProfileGroup:hover text,
+        #FeedbackGroup:hover text,
+        #SitemapGroup:hover text,
+        #TeamGroup:hover text,
+        #ContentPageGroup:hover text{
+             fill: rgb(135, 36, 0);
+             font-weight: bolder;
+        }
+        ::-webkit-scrollbar {
+            width: 11px;
+        }
+        ::-webkit-scrollbar-track {
+            background-color: rgb(37, 37, 37);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cc0000c4;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #e63e20ec;
+        }
+        
+        .navbar {
+            width: 100%;
+            height: 17%;
+            display: flex;
+            flex-direction: row;
+            background-color: rgba(250, 246, 246, 0.9);
+            top: 0;
+            position: fixed;
+            z-index: 99;
+            flex-wrap: wrap;
+        }
+        .navbar-logo {
+            width: auto;
+            height: 130px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        
+        .nav-items {
+            font-family: Century Gothic;
+            font-weight: bold;
+            width: 80%;
+            height: 100%;
+            right: 0;
+            margin-left: auto;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-around;
+            flex-wrap: wrap;
+
+        }
+        .nav-pageEditor,
+        .nav-item {
+            text-decoration: none;
+            height: 60%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            font-family: "Concert One", sans-serif;
+            color: #A93226;
+            font-size: 20px;
+            flex: 1 0 auto;
+            flex-wrap: wrap;
+        }
+        .nav-pageEditor,
+        nav div a {
+            position: relative;
+        }
+        .nav-pageEditor{
+            cursor: pointer;
+        }
+        .nav-pageEditor:hover,
+        nav div a:hover {
+            color: #7a7574;
+        }
+        .nav-pageEditor::before,
+        .nav-item::before {
+            content: "";
+            display: block;
+            height: 5px;
+            background-color: #f4f7f3a9;
+            position: absolute;
+            bottom: 0;
+            width: 0%;
+            transition: all ease-in-out 250ms;
+        }
+        .nav-pageEditor:hover::before,
+        nav div a:hover::before {
+            width: 80%;
+        }
+        @media screen and (max-width: 1185px) {
+
+            html,
+            body {
+                background-size: auto 100%;
+                background-position: center center;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <img src="websiteLogo.png" alt="Logo" class="navbar-logo">
+        <div class="nav-items">
+            <a href="#home" class="nav-home nav-item">Home</a>
+            <a href="gallery.html" class="nav-gallery nav-item">Gallery</a>
+            <a href="#shop" class="nav-shop nav-item">Shop</a>
+            <a href="#userProfile" class="nav-userprofile nav-item">User Profile</a>
+            <a href="#feedback.html" class="nav-feedback nav-item">Feedback</a>
+            <a href="sitemap.html" class="nav-sitemap nav-item">Sitemap</a>
+            <a href="content.html" class="nav-content nav-item">Content Page</a>
+            <div class="nav-pageEditor nav-item" onclick="openPageEditor()">Page Editor</div>
+        </div>
+    </nav>
+
+    <h3>Sitemap</h3>
+    <svg id="sitemap" viewBox="0 0 1400 550">
+        <g id="HomeGroup">
+            <a href="#home.html">
+            <rect width="150" height="70" x="590" y="130" rx="50" ry="50" fill="lightblue" stroke-width="4" stroke="black"/>
+            <text x="640" y="170" fill="white" font-size="20">Home</text>
+            </a>
+        </g>
+        <g id="GalleryGroup">
+            <a href="gallery.html" >
+            <rect width="150" height="70" x="25" y="320" rx="50" ry="50" fill="lightblue" stroke-width="4" stroke="black"/>
+            <text x="75" y="360" fill="white" font-size="20">Gallery</text>
+            </a>
+        </g>
+        <g id="ShopGroup">
+            <a href="#shop.html" >
+            <rect width="150" height="70" x="230" y="320" rx="50" ry="50" fill="lightblue" stroke-width="4" stroke="black"/>
+            <text x="280" y="360" fill="white" font-size="20">Shop</text>
+            </a>
+        </g>
+        <g id="UserProfileGroup">
+            <a href="#userprofile.html">
+            <rect width="150" height="70" x="410" y="320" rx="50" ry="50" fill="lightblue" stroke-width="4" stroke="black"/>
+            <text x="437" y="360" fill="white" font-size="20">User Profile</text>
+            </a>
+        </g>
+        <g id="FeedbackGroup">
+            <a href="#feedback.html">
+            <rect width="150" height="70" x="590" y="320" rx="50" ry="50" fill="lightblue" stroke-width="4" stroke="black"/>
+            <text x="630" y="360" fill="white" font-size="20">Feedback</text>
+            </a>
+        </g>
+        <g id="SitemapGroup">
+            <a href="sitemap.html">
+            <rect width="150" height="70" x="770" y="320" rx="50" ry="50" fill="lightblue" stroke-width="4" stroke="black"/>
+            <text x="810" y="360" fill="white" font-size="20">Sitemap</text>
+            </a>
+        </g>
+        <g id="TeamGroup">
+            <a href="#Team.html">
+            <rect width="150" height="70" x="950" y="320" rx="50" ry="50" fill="lightblue" stroke-width="4" stroke="black"/>
+            <text x="1000" y="360" fill="white" font-size="20">Team</text>
+            </a>
+        </g>
+        <g id="ContentPageGroup">
+            <a href="content.html">
+            <rect width="150" height="70" x="1140" y="320" rx="50" ry="50" fill="lightblue" stroke-width="4" stroke="black"/>
+            <text x="1181" y="360" fill="white" font-size="20">Content </text>
+            </a>
+        </g>
+        <g id="lines">
+            <line x1="665" y1="200" x2="665" y2="260" style="stroke:rgb(0, 0, 0);stroke-width:4"/>
+            <line x1="100" y1="260" x2="1215" y2="260" style="stroke:rgb(0, 0, 0);stroke-width:4"/>
+            <line x1="100" y1="260" x2="100" y2="320" style="stroke:rgb(0, 0, 0);stroke-width:4"/>
+            <line x1="305" y1="260" x2="305" y2="320" style="stroke:rgb(0, 0, 0);stroke-width:4"/>
+            <line x1="485" y1="260" x2="485" y2="320" style="stroke:rgb(0, 0, 0);stroke-width:4"/>
+            <line x1="665" y1="260" x2="665" y2="320" style="stroke:rgb(0, 0, 0);stroke-width:4"/>
+            <line x1="845" y1="260" x2="845" y2="320" style="stroke:rgb(0, 0, 0);stroke-width:4"/>
+            <line x1="1025" y1="260" x2="1025" y2="320" style="stroke:rgb(0, 0, 0);stroke-width:4"/>
+            <line x1="1215" y1="260" x2="1215" y2="320" style="stroke:rgb(0, 0, 0);stroke-width:4"/>
+        </g>
+    </svg>
+    <script>
+        function openPageEditor() {
+            window.open("Editor.html");
+        }
+    </script>
+</body>
+</html>
