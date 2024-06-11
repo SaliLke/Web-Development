@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        body{
+            background:#dddddd;
+            margin: 0;
+        }
+        ::-webkit-scrollbar {
+            width: 11px;
+        }
+        ::-webkit-scrollbar-track {
+            background-color: rgb(37, 37, 37);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cc0000c4;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #e63e20ec;
+        }
+        
+        .navbar {
+            width: 100%;
+            height: 17%;
+            display: flex;
+            flex-direction: row;
+            background-color: rgba(250, 246, 246, 0.9);
+            top: 0;
+            position: fixed;
+            z-index: 99;
+            flex-wrap: wrap;
+        }
+        .navbar-logo {
+            width: auto;
+            height: 130px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        
+        .nav-items {
+            font-family: Century Gothic;
+            font-weight: bold;
+            width: 80%;
+            height: 100%;
+            right: 0;
+            margin-left: auto;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-around;
+            flex-wrap: wrap;
+
+        }
+        .nav-pageEditor,
+        .nav-item {
+            text-decoration: none;
+            height: 60%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            font-family: "Concert One", sans-serif;
+            color: #A93226;
+            font-size: 20px;
+            flex: 1 0 auto;
+            flex-wrap: wrap;
+        }
+        .nav-pageEditor,
+        nav div a {
+            position: relative;
+        }
+        .nav-pageEditor{
+            cursor: pointer;
+        }
+        .nav-pageEditor:hover,
+        nav div a:hover {
+            color: #7a7574;
+        }
+        .nav-pageEditor::before,
+        .nav-item::before {
+            content: "";
+            display: block;
+            height: 5px;
+            background-color: #f4f7f3a9;
+            position: absolute;
+            bottom: 0;
+            width: 0%;
+            transition: all ease-in-out 250ms;
+        }
+        .nav-pageEditor:hover::before,
+        nav div a:hover::before {
+            width: 80%;
+        }
+        @media screen and (max-width: 1185px) {
+
+            html,
+            body {
+                background-size: auto 100%;
+                background-position: center center;
+            }
+        }
+        .headerGallery{
+            text-align: center;
+            padding: 100px 0 10px 0;
+            color: rgb(198, 0, 0);
+            font-size: 45px;
+            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+        .row{
+            display: grid;
+            grid-template-columns: repeat(auto-fit,minmax(180px, 1fr));
+            grid-gap: 30px;
+            margin: 0px 100px 100px 100px;
+            background-color: rgb(255, 255, 255);
+            padding: 20px 50px 20px 50px;
+            border-radius: 30px;
+            box-shadow: 0 0 6px -1px #000000;
+        }       
+        .column img{
+            width: 100%;
+            margin-top: 30px;
+            vertical-align: middle;
+            border-radius: 10px;
+        }
+        .overlay{
+            position: relative;
+            background: rgba(0, 0, 0, 0.7);
+            color: rgb(255, 255, 255);
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+            height: 30px;
+            top: -30px;
+            border-bottom-right-radius: 6px;
+            border-bottom-left-radius: 6px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: none;
+        }
+        .image{
+            transform-origin: center;
+        }
+        .image:hover .overlay {
+            display: block;
+        }
+         
+        .image:hover{
+            transform: scale(1.1);
+            transition: transform 0.5s;
+            cursor: pointer;
+        }
+        .image:hover img{
+            box-shadow: 0 0 6px -1px #000000;
+        }        
+        .fullImg{
+            max-width: 86%;
+            height: 80%;
+            background:black;
+            display: none;
+            position:fixed;
+            z-index: 100;
+            bottom: 50px;
+            left: 98px;
+            align-items: center;
+            justify-content: center;
+            transition: ease-in-out;
+            animation: scaleAnimation 0.5s ease-in-out forwards;
+            box-shadow: 0 0 0 166px white;
+            border-radius: 10px;
+        }
+        .fullImg img{
+            position: relative;
+            max-width: 60%;
+            max-height: 90%;
+            left: 60px;
+            top: 10px;
+            border-radius: 30px;
+        }
+        
+        @keyframes scaleAnimation {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+                filter: blur(33px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+                filter: blur(0);
+            }
+        }
+
+        .closebtn{
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            cursor: pointer;
+            font-size: 15px;
+            padding: 0px 5px 0px 5px;
+        }
+        .info{
+            animation: scaleAnimation 0.5s ease-in-out forwards;
+        }
+        .info h4{
+            max-width: 80%;
+            position: relative;
+            font-weight: bold;
+            font-family: Helvetica;
+            text-align: center;
+            color: rgb(255, 255, 255);
+            font-size: 2.5vw;
+            left: 80px;
+        }
+        .info p{
+            max-width: 90%;
+            max-height: 60%;
+            padding: 20px;
+            right: 100px;
+            background-color: rgb(86, 86, 86);
+            text-align: left;
+            color: blanchedalmond;
+            font-size: 15px;
+            text-align: left;
+            border-radius: 25px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .colorChange{
+            position: fixed;
+            bottom: 24px;
+            right: 22px;
+            border: 2px solid rgb(166, 0, 0);
+            padding: 8px 16px 8px 16px;
+            border-radius: 50px;
+            background-color: rgb(200, 0, 0);
+            color: #ffffff;
+            z-index: 101;
+        }
+        .colorChange input{
+            position: absolute;
+            top: 0;
+            left:0;
+            width: 100%;
+            height:100%;
+            opacity: 0;
+        }
+        .colorChange:hover{
+            transform: scale(1.1);
+            transition: 0.4s;
+        }
+        .fontChange {
+            position: fixed;
+            bottom: 65px;
+            right: 22px;
+            border: 2px solid rgb(166, 0, 0);
+            padding: 8px 16px 8px 16px;
+            border-radius: 50px;
+            background-color: rgb(200, 0, 0);
+            color: #ffffff;
+            z-index: 101;
+        }
+        .fontChange select{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+        }
+        .fontChange:hover{
+            transform: scale(1.1);
+            transition: 0.4s;
+        }
+        .PageEditor{
+            position: fixed;
+            bottom: 24px;
+            left: 22px;
+            border: 2px solid grey;
+            padding: 8px 16px 8px 16px;
+            border-radius: 50px;
+            background-color: beige;
+            color: #808080;
+        }
+
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <img src="Gallery Images/websiteLogo.png" alt="Logo" class="navbar-logo">
+        <div class="nav-items">
+            <a href="#home" class="nav-home nav-item">Home</a>
+            <a href="gallery.html" class="nav-gallery nav-item">Gallery</a>
+            <a href="#shop" class="nav-shop nav-item">Shop</a>
+            <a href="#userProfile" class="nav-userprofile nav-item">User Profile</a>
+            <a href="#feedback" class="nav-feedback nav-item">Feedback</a>
+            <a href="../Sitemap/sitemap.html" class="nav-sitemap nav-item">Sitemap</a>
+            <a href="../Content page/content.html" class="nav-content nav-item">Content Page</a>
+            <div class="nav-pageEditor" id="pageEditor" onclick="openPageEditor()">Page Editor</div>
+        </div>
+    </nav>
+
+    <h1 class="headerGallery">Gallery</h1>
+    <div class="fullImg" id="fullImageDisplay">
+        <img src="Gallery Images/SDG-Bookclub.jpg" alt="" id="fullImage">
+        <div class="info">
+            <h4 id="infotitle">Education</h4>
+            <p id="infoparagraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, sint?</p>
+        </div>
+        <span class="closebtn" id="closebtn" onclick="closeFullImg()">x</span>
+    </div>
+    <div class="row">
+        <div class="column">
+            <div class="image">
+                <img src="Gallery Images/SDG-Bookclub.jpg" alt="SDG Book Club" onclick=" openFullImg(this.src)">
+                <div class="overlay">SDG Book Club</div>
+            </div>
+            <div class="image">
+                <img src="Gallery Images/primaryEducation.jpeg" alt="Pre-Primary Education" onclick=" openFullImg(this.src)">
+                <div class="overlay">Pre-Primary Education</div>
+            </div>
+            <div class="image">
+                <img src="Gallery Images/poverty.jpg" alt="Free Education" onclick=" openFullImg(this.src)">
+                <div class="overlay">Free Education</div>  
+            </div>
+        </div>
+        <div class="column">
+            <div class="image">
+                <img src="Gallery Images/Sensitive_Education.jpeg" alt="Build and upgrade education facilities"  onclick=" openFullImg(this.src)">
+                <div class="overlayBlock"></div>
+                <div class="overlay">Build and upgrade education facilities</div>
+            </div>
+            <div class="image">
+                <img src="Gallery Images/citizenship.jpg" alt="Global citizenship" onclick=" openFullImg(this.src)">
+                <div class="overlayBlock"></div>
+                <div class="overlay">Global citizenship</div>   
+            </div>
+            <div class="image">
+                <img src="Gallery Images/Scholarships.jpg" alt="Expanding Scholarships" onclick=" openFullImg(this.src)">
+                <div class="overlay">Expanding Scholarships</div>
+            </div>         
+        </div>
+        <div class="column">
+            <div class="image">
+                <img src="Gallery Images/ICT_access.jpg" alt="Investing in ICT access" onclick=" openFullImg(this.src)">
+                <div class="overlay">Investing in ICT access</div>
+            </div>
+            <div class="image">
+                <img src="Gallery Images/Equitable.jpg" alt="Inclusive, equitable Education" onclick=" openFullImg(this.src)">
+                <div class="overlay">Inclusive, equitable Education</div>
+            </div> 
+            <div class="image">
+                <img src="Gallery Images/teacher.jpg" alt="Qualified Teachers" onclick=" openFullImg(this.src)">
+                <div class="overlay">Qualified Teachers</div>   
+            </div>
+        </div>
+    </div>
+    <div class="colorChange">
+        Color
+        <input type="color" id="colorchanger">
+    </div>
+    
+    <div class="fontChange">
+        <label for="fontStyle">Font</label>
+        <select id="fontStyle">
+            <option value="Arial,sans-serif">Arial</option>
+            <option value="Times New Roman, serif">Times New Roman</option>
+            <option value="Courier New, monospace">Courier New</option>
+        </select>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chroma-js/2.4.2/chroma.min.js"></script>
+    <script>
+        var FullImageDisplay= document.getElementById("fullImageDisplay");
+        var FullImage= document.getElementById("fullImage");
+        var TextHeading=document.getElementById("infotitle");
+        var TextParagraph=document.getElementById("infoparagraph");
+        var CloseButton = document.getElementById("closebtn");
+        var PageEditor = document.getElementById("pageEditor");
+       
+        function openFullImg(pic){
+            FullImageDisplay.style.display="flex";
+            FullImage.src=pic;
+            var AltText=event.target.alt;
+
+            TextHeading.textContent=AltText;
+            TextParagraph.textContent=UpdateAltText(AltText);
+        }
+        function UpdateAltText(altText){
+            const infoMap={
+                "SDG Book Club":"Reading is a great way to better understand what people from across the globe struggle with in their everyday lives, and it helps us reflect on our own situation. But reading is just the first step: now it’s time to share your book club experiences and how you plan to take action. Each month, they will feature a couple of book clubs on their blog, so get ready to share your story through social media, by using SDGBookClub and tagging @UNPublications.",
+                "Pre-Primary Education":"Pre-primary education is critical for establishing a solid foundation for a child‘s social, emotional and overall well-being. The early years of a child’s life build the basis for lifelong growth, and children who fall behind in these early years often never catch up with their peers, leaving them more likely to drop out of school and fail to reach their full potential. Though there are varying standards, pre-primary educational programmes are typically designed for children 3 to 5 years of age.",
+                "Qualified Teachers":"substantially increase the supply of qualified teachers, including through international cooperation for teacher training in developing countries, especially least developed countries and small island developing States",
+                "Build and upgrade education facilities":"This indicator measures the presence of basic services and facilities in school that are necessary to ensure a safe and effective learning environment for all students. A high value indicates that schools have good access to the relevant services and facilities. Ideally each school should have access to all these services and facilities.",
+                "Expanding Scholarships":"Substantially expand globally the number of scholarships available to developing countries, in particular least developed countries, small island developing States and African countries, for enrolment in higher education, including vocational training and information and communications technology, technical, engineering and scientific programmes, in developed countries and other developing countries.",
+                "Global citizenship":"Ensure that all learners acquire the knowledge and skills needed to promote sustainable development, including, among others, through education for sustainable development and sustainable lifestyles, human rights, gender equality, promotion of a culture of peace and non-violence, global citizenship and appreciation of cultural diversity and of culture’s contribution to sustainable development",
+                "Investing in ICT access":"Knowledge and information have become transformative dimensions of our existence and are key drivers behind the implementation of all the Sustainable Development Goals (SDGs). From government to small villages, knowledge and information guides what people do and how they do it. The 2030 Agenda recognizes the need to develop knowledge societies where everyone has opportunities to learn and engage with others, which starkly highlights the need for access to Information and Communication Technologies (ICTs). ",
+                "Inclusive, equitable Education":"Access to quality education is not only a goal in itself, but a fundamental building block to creating a better world of sustainable peace, prosperity and development. Despite considerable progress in school enrolment, millions of children remain out of school, especially where educational systems struggle to keep up with population growth. Even when more children are enrolled, many do not acquire the basic skills. Quality education is hampered by the lack of trained teachers and adequate school facilities",
+                "Free Education":"By 2030, ensure that all girls and boys complete free, equitable and quality primary and secondary education leading to relevant and effective learning outcomes.",
+            }
+            return infoMap[altText];
+        }
+        
+        function closeFullImg(){
+            FullImageDisplay.style.display="none";
+        }
+        
+        const changer=document.getElementById("colorchanger")
+        const ImgTag=document.getElementById("fullImageDisplay")
+
+        changer.addEventListener("input",function(){
+            const chosenColor = changer.value;
+            ImgTag.style.background = chosenColor;
+
+            const darkerColor = chroma(chosenColor).darken(1.5).hex();
+            TextParagraph.style.backgroundColor = darkerColor;
+
+            const color = chroma(changer.value);
+            if (color.luminance() < 0.3) {
+                // Background is dark
+                TextHeading.style.color = "#ffffff"; // White font color
+                TextParagraph.style.color = "#ffffff"; // White font color
+                CloseButton.style.color = "#ffffff";
+            } else {
+                // Background is light
+                TextHeading.style.color = "#000000"; // Black font color
+                TextParagraph.style.color = "#000000"; // Black font color
+                CloseButton.style.color = "#000000";
+            }
+        });
+
+        var fontChanger=document.getElementById("fontStyle");
+        fontChanger.addEventListener("change", function() {
+            var newFontStyle=fontChanger.value;
+            var FontHeading=document.getElementById("infotitle");
+            var FontParagragh=document.getElementById("infoparagraph");
+            FontHeading.style.fontFamily=newFontStyle;
+            FontParagragh.style.fontFamily=newFontStyle;
+        });
+
+        function openPageEditor() {
+            window.open("#editor.html");
+        }
+
+        </script>
+</body>
+</html>
